@@ -15,11 +15,10 @@ changeSize.onclick = function () {
   if (sizeInput.value >= 2 && sizeInput.value <= 20) {
     size = sizeInput.value;
     width = canvas.width / size - 6;
-    console.log(sizeInput.value);
     canvasClean();
     startGame();
   }
-}
+};
 
 function cell(row, coll) {
   this.value = 0;
@@ -83,7 +82,7 @@ document.onkeydown = function (event) {
     }
     scoreLabel.innerHTML = 'Score : ' + score;
   }
-}
+};
 
 function startGame() {
   createCells();
