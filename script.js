@@ -7,7 +7,7 @@ var scoreLabel = document.getElementById('score');
 
 var score = 0;
 var size = 4;
-var width = canvas.width / size - 5;
+var width = canvas.width / size - 6;
 
 var cells = [];
 var fontSize;
@@ -15,9 +15,21 @@ var loss = false;
 
 startGame();
 
+function pasteNewCell() {
+  while (true) {
+    var row = Math.floor(Math.random() * size);
+    var coll = Math.floor(Math.random() * size);
+    if (!cell([row][coll].value)) {
+      cells[row][coll].value = 2 * Math.ceil(Math.random() * 2);
+      drawAllCells();
+      return;
+    }
+  }
+}
 function startGame() {
   createCells();
   drawAllCells();
+  pasteNewCell();
 }
 
 function cell(row, coll) {
@@ -83,6 +95,8 @@ function drawCell(cell) {
       ctx.fillStyle = '#FFFFFF';
   }
 
+  
+
   ctx.fill();
   if (cell.value) {
     fontSize = width / 2;
@@ -100,3 +114,9 @@ function drawAllCells() {
     }
   }
 }
+
+// function drawCell(cell)
+
+// function drawAllCells()
+
+// function pasteNewCell()
